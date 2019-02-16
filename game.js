@@ -6,13 +6,17 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
-$(document).keypress(function() {
+$(document).keypress(handleStart);
+$("#level-title").click(handleStart);
+
+function handleStart() {
 if (!started) {
 $("#level-title").text("Level: " + level);
   nextSequence();
   started = true;
 }
-});
+}
+
 
 
 $(".btn").click(function() {
@@ -38,7 +42,7 @@ if (userClickedPattern.length === gamePattern.length) {
       setTimeout(function() {
         $("body").removeClass("game-over");
       }, 200);
-      $("h1").text("Game over. Press a key to start.");
+      $("#level-title").text("Game over. Click here or press a key to start.");
       startOver();
 }
 }
